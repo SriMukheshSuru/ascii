@@ -136,6 +136,50 @@ button:active {
             background: grey;
             margin: 20px 0;
         }
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            
+        }
+
+        .block {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            width: 250px;
+            text-align: center;
+        }
+
+        .input,
+        .button {
+            margin: 10px 0;
+            padding: 15px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .reset-button {
+            background-color: #f44336;
+            margin-top: 5px;
+        }
+
+        .reset-button:hover {
+            background-color: #e53935;
+        }
         @media (min-width: 768px) {
         /* Medium and large screens */
         .code-snippet {
@@ -145,7 +189,23 @@ button:active {
 </head>
 
 <body>
-
+    <h1>Binary ↔ Decimal</h1>
+    <div class="container">
+        <div class="block">
+            <h2>Binary to Decimal</h2>
+            <input type="text" id="binaryInput" class="input" placeholder="Enter binary number">
+            <button class="button" onclick="convertToDecimal()">Convert</button>
+            <button class="button reset-button" onclick="resetBinaryInput()">Reset</button>
+            <p id="decimalOutput">Decimal: </p>
+        </div>
+        <div class="block">
+            <h2>Decimal to Binary</h2>
+            <input type="text" id="decimalInput" class="input" placeholder="Enter decimal number">
+            <button class="button" onclick="convertToBinary()">Convert</button>
+            <button class="button reset-button" onclick="resetDecimalInput()">Reset</button>
+            <p id="binaryOutput">Binary: </p>
+        </div>
+    </div>
     <h1>ASCII Table</h1>
     <!-- <h4>Dec = Decimal Value</h4>
     <h4>Char = Character</h4> -->
@@ -634,6 +694,35 @@ button:active {
 
 
 <script>
+    function convertToDecimal() {
+            const binaryInput = document.getElementById('binaryInput').value;
+            if (/^[01]+$/.test(binaryInput)) {
+                const decimalOutput = parseInt(binaryInput, 2);
+                document.getElementById('decimalOutput').innerText = 'Decimal: ' + decimalOutput;
+            } else {
+                document.getElementById('decimalOutput').innerText = 'Decimal: Invalid Input';
+            }
+        }
+
+        function convertToBinary() {
+            const decimalInput = document.getElementById('decimalInput').value;
+            if (/^\d+$/.test(decimalInput)) {
+                const binaryOutput = parseInt(decimalInput, 10).toString(2);
+                document.getElementById('binaryOutput').innerText = 'Binary: ' + binaryOutput;
+            } else {
+                document.getElementById('binaryOutput').innerText = 'Binary: Invalid Input';
+            }
+        }
+
+        function resetBinaryInput() {
+            document.getElementById('binaryInput').value = '';
+            document.getElementById('decimalOutput').innerText = 'Decimal: ';
+        }
+
+        function resetDecimalInput() {
+            document.getElementById('decimalInput').value = '';
+            document.getElementById('binaryOutput').innerText = 'Binary: ';
+        }
     document.querySelector('.copy-button').addEventListener('click', function () {
         var code = document.querySelector('.code-snippet pre code').innerText;
         navigator.clipboard.writeText(code).then(() => {
