@@ -109,7 +109,7 @@ button:active {
             border: 1px solid #ccc;
             padding: 10px;
             border-radius: 5px;
-            width: 60%;
+            width: 100%;
             overflow-x: auto;
             font-family: 'Courier New', Courier, monospace;
             position: relative;
@@ -135,6 +135,11 @@ button:active {
             height: 1px;
             background: grey;
             margin: 20px 0;
+        }
+        @media (min-width: 768px) {
+        /* Medium and large screens */
+        .code-snippet {
+        width: 60%;
         }
     </style>
 </head>
