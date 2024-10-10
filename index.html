@@ -770,50 +770,6 @@ button:active {
 </div>
 
 
-<!-- <script>
-    function convertToDecimal() {
-            const binaryInput = document.getElementById('binaryInput').value;
-            if (/^[01]+$/.test(binaryInput)) {
-                const decimalOutput = parseInt(binaryInput, 2);
-                document.getElementById('decimalOutput').innerText = 'Decimal: ' + decimalOutput;
-            } else {
-                document.getElementById('decimalOutput').innerText = 'Decimal: Invalid Input';
-            }
-        }
-
-        function convertToBinary() {
-            const decimalInput = document.getElementById('decimalInput').value;
-            if (/^\d+$/.test(decimalInput)) {
-                const binaryOutput = parseInt(decimalInput, 10).toString(2);
-                document.getElementById('binaryOutput').innerText = 'Binary: ' + binaryOutput;
-            } else {
-                document.getElementById('binaryOutput').innerText = 'Binary: Invalid Input';
-            }
-        }
-
-        function resetBinaryInput() {
-            document.getElementById('binaryInput').value = '';
-            document.getElementById('decimalOutput').innerText = 'Decimal: ';
-        }
-
-        function resetDecimalInput() {
-            document.getElementById('decimalInput').value = '';
-            document.getElementById('binaryOutput').innerText = 'Binary: ';
-        }
-    document.querySelector('.copy-button').addEventListener('click', function () {
-        var code = document.querySelector('.code-snippet pre code').innerText;
-        navigator.clipboard.writeText(code).then(() => {
-            this.textContent = '✔ Copied!';
-            this.classList.add('copied');
-
-            setTimeout(() => {
-                this.textContent = 'Copy Code';
-                this.classList.remove('copied');
-            }, 20000);
-        });
-    });
-</script> -->
-
 <script>
     // Convert Binary to Decimal
     function convertToDecimal() {
