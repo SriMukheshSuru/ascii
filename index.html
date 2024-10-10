@@ -736,7 +736,7 @@ button:active {
             size[par_v] += size[par_u];
             }
         }
-    }
+    };
     </code></pre>
 </div>
 
@@ -745,7 +745,7 @@ button:active {
 <div class="code-snippet">
     <button class="copy-button">Copy Code</button>
     <pre><code>
-    SieveOfEratosthenes(int n)
+     vector&lt;int&gt; SieveOfEratosthenes(int n)
     {
         vector&lt;bool&gt; prime(n + 1, true);
         for (int p = 2; p * p &lt;= n; p++)
