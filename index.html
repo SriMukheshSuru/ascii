@@ -829,25 +829,36 @@ button:active {
         document.getElementById('binaryOutput').innerText = 'Binary: ';
     }
 
+    if (window.isSecureContext === false) {
+        // Show a warning message
+        alert('Warning: Clipboard functionality may not work because this site is not hosted on HTTPS. Please use a secure (HTTPS) connection.');
+    }
+
     // Add event listener to all copy buttons
     document.querySelectorAll('.copy-button').forEach(button => {
         button.addEventListener('click', function () {
-            // Get the code snippet inside the same container as the button
-            var code = this.parentElement.querySelector('pre code').innerText;
-            // Copy the code to the clipboard
-            navigator.clipboard.writeText(code).then(() => {
-                // Change button text to "✔ Copied!" and style it
-                this.textContent = '✔ Copied!';
-                this.classList.add('copied');
+            // Check if clipboard API is available
+            if (navigator.clipboard && window.isSecureContext) {
+                // Get the code snippet inside the same container as the button
+                var code = this.parentElement.querySelector('pre code').innerText;
+                // Copy the code to the clipboard
+                navigator.clipboard.writeText(code).then(() => {
+                    // Change button text to "✔ Copied!" and style it
+                    this.textContent = '✔ Copied!';
+                    this.classList.add('copied');
 
-                // Revert button text back to "Copy Code" after 2 seconds
-                setTimeout(() => {
-                    this.textContent = 'Copy Code';
-                    this.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+                    // Revert button text back to "Copy Code" after 2 seconds
+                    setTimeout(() => {
+                        this.textContent = 'Copy Code';
+                        this.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            } else {
+                // Fallback if the API is not available or context is not secure
+                alert('Clipboard functionality is not supported in this insecure context. Please switch to a secure (HTTPS) connection.');
+            }
         });
     });
 </script>
