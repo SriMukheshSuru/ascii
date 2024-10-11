@@ -5,6 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASCII Table</title>
+    <script type="text/javascript">
+        function checkCredentials() {
+            var name = document.getElementById("name").value;
+            var password = document.getElementById("password").value;
+
+            // Define the valid name and password
+            if (name == "Nikenduku" && password == "151203") {
+                document.getElementById("protectedContent").style.display = "block";
+                document.getElementById("loginSection").style.display = "none";
+            } else {
+                alert("Incorrect name or password. Please try again.");
+            }
+        }
+    </script>
     <link rel="icon" href="logo.png" type="image/png">
     <!-- <style>
         table {
@@ -193,6 +207,16 @@ button:active {
 </head>
 
 <body>
+    <div id="loginSection">
+        <h2>Enter Name and Password to View Content</h2>
+        <input type="text" id="name" placeholder="Enter your name">
+        <br><br>
+        <input type="password" id="password" placeholder="Enter password">
+        <br><br>
+        <button onclick="checkCredentials()">Submit</button>
+    </div>
+
+    <div id="protectedContent" style="display:none;">
     
     <h1>Binary ↔ Decimal</h1>
     <div class="container">
@@ -769,7 +793,7 @@ button:active {
     </code></pre>
 </div>
 
-
+</div>
 <script>
     // Convert Binary to Decimal
     function convertToDecimal() {
