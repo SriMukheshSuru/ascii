@@ -7,15 +7,15 @@
     <title>ASCII Table</title>
     <script type="text/javascript">
         function checkCredentials() {
-            var name = document.getElementById("name").value;
+            
             var password = document.getElementById("password").value;
 
             // Define the valid name and password
-            if (name == "Nikenduku" && password == "151203") {
+            if (password == "151203") {
                 document.getElementById("protectedContent").style.display = "block";
                 document.getElementById("loginSection").style.display = "none";
             } else {
-                alert("Incorrect name or password. Please try again.");
+                alert("Incorrect password. Please try again.");
             }
         }
     </script>
@@ -139,9 +139,7 @@
 
 <body>
     <div id="loginSection">
-        <h2>Enter Name and Password to View Content</h2>
-        <input type="text" id="name" placeholder="Enter your name">
-        <br><br>
+        <h2>Enter Password to View Content</h2>
         <input type="password" id="password" placeholder="Enter password">
         <br><br>
         <button onclick="checkCredentials()">Submit</button>
